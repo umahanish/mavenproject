@@ -12,7 +12,7 @@ pipeline{
                   git credentialsId: '560f3df1-81d8-4733-8229-d470595fb0e9', url: 'https://github.com/umahanish/mavenproject'
               }
           }
-          stage("Maven Build"){
+          stage("Maven-Build"){
               steps{
                   sh "mvn clean package"
                   sh "mv target/*.war target/myweb.war"
