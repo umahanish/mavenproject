@@ -9,7 +9,7 @@ pipeline{
      stages{
          stage("Git Checout"){
               steps{
-                  git credentialsId: 'github-pat', url: 'https://github.com/umahanish/mavenproject'
+                  git credentialsId: 'gitub-pat-token', url: 'https://github.com/umahanish/mavenproject'
               }
           }
           stage("Maven-Build"){
