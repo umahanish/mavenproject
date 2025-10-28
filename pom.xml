@@ -28,6 +28,16 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>JenkinsWar</finalName>
-    </build>
+    <finalName>JenkinsWar</finalName>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>3.3.2</version> <!-- Compatible with Java 17 and Jakarta EE -->
+            <configuration>
+                <failOnMissingWebXml>false</failOnMissingWebXml>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
 </project>
