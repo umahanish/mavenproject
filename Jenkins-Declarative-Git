@@ -9,7 +9,7 @@ pipeline{
      stages{
          stage("Git Checout"){
               steps{
-                  git credentialsId: '63844d50-cd76-4911-ab47-966895d87bfb', url: 'https://github.com/umahanish/mavenproject'
+                  git credentialsId: 'github-pat', url: 'https://github.com/umahanish/mavenproject'
               }
           }
           stage("Maven-Build"){
@@ -21,11 +21,11 @@ pipeline{
            stage("deploy-dev"){
                steps{sshagent(['ec2-key']) {
                     sh """
-                         scp -o StrictHostKeyChecking=no target/myweb.war ec2-user@10.0.1.57:/opt/tomcat9/webapps/
+                         scp -o StrictHostKeyChecking=no target/myweb.war ec2-user@10.10.1.31:/opt/tomcat10/webapps/
                          
-                         ssh ec2-user@10.0.1.57 /opt/tomcat9/bin/shutdown.sh
+                         ssh ec2-user@10.10.1.31 /opt/tomcat10/bin/shutdown.sh
                          
-                         ssh ec2-user@10.0.1.57 /opt/tomcat9/bin/startup.sh
+                         ssh ec2-user@10.10.1.31 /opt/tomcat10/bin/startup.sh
 
                     """
                     }
